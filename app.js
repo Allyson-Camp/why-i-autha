@@ -1,6 +1,6 @@
 //imports
 
-import { signInUser, signupUser } from './fetch-utils.js';
+import { redirectIfLoggedIn, signInUser, signupUser } from './fetch-utils.js';
 
 
 //dom elemnts
@@ -23,7 +23,7 @@ signUpForm.addEventListener('submit', async (e) => {
     await signupUser(data.get('email'), data.get('password'));
 
     //redirect to other page?
-    window.location.href = './other-page';
+    window.location.href = '../other-page';
 });
 
 signInForm.addEventListener('submit', async (e) => {
@@ -33,8 +33,13 @@ signInForm.addEventListener('submit', async (e) => {
     
     await signInUser(data.get('email'), data.get('password'));
     
-    window.location.href = './other-page';
+    window.location.href = '../other-page';
+
+    // Redirect to /other-page on successful auth
+    // Redirect to /other-page when page loads if user is authenticated
 });
+
+redirectIfLoggedIn();
 // Fetch 
 // Loop
 // O pass object
@@ -45,6 +50,7 @@ signInForm.addEventListener('submit', async (e) => {
 //display functions
 
 //call necessary functions
+// redirectIfLoggedIn();
 
 // Wire up sign in and sign up forms to supabase
 // Redirect to /other-page on successful auth

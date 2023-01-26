@@ -21,7 +21,9 @@ export async function signupUser(email, password) {
         password: password,
     });
     // if (error) console.error(error);
+    // console.log(response);
     return response.data;
+    
 }
 
 export async function signInUser(email, password) {
@@ -42,10 +44,16 @@ export async function signInUser(email, password) {
 }
 
 export async function checkAuth() {
+// check if user (bang), if not go back to home page
+    const user = await getUser(); 
 
+    if (!user) location.replace('../');
 }
 
-export async function redirectIfLoggedIn() {}
+export async function redirectIfLoggedIn() {
+    const user = await getUser();
+    if (user) location.replace('../other-page');
+}
 
 export async function logout() {
     // const { error } = await client.auth.signOut();
