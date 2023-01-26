@@ -40,10 +40,10 @@ The following is required for your assignment to be graded:
 | Task                                                                           | **10** |
 | ------------------------------------------------------------------------------ | ------ |
 | ** Code Requirements **                                                        |        |
-| Clear commit history with multiple commits with working code                   | 2      |
-| Users can sign in and are redirected to other-page                             | 2      |
-| Users can register and are redirected to other-page                            | 2      |
-| Users can logout from the other page                                           | 2      |
+<!-- | Clear commit history with multiple commits with working code                   | 2      | -->
+<!-- | Users can sign in and are redirected to other-page                             | 2      | -->
+<!-- | Users can register and are redirected to other-page                            | 2      |
+| Users can logout from the other page                                           | 2      | -->
 | Authenticated users are redirected to the other page from the home page        | 1      |
 | Unauthenticated users are redirected back to the home page from the other page | 1      |
 

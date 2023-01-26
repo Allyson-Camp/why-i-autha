@@ -1,6 +1,5 @@
-// Enter Supabase Information
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://ejeezbcksxazezxketdy.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqZWV6YmNrc3hhemV6eGtldGR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ0ODk2MjcsImV4cCI6MTk5MDA2NTYyN30.uPokWkEqMtvLPS0Xe9q-myZON-BEU1EAO4iq7-o0cEk';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -8,12 +7,62 @@ export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
 
-export async function signupUser(email, password) {}
+export async function signupUser(email, password) {
+    // const { data, error } = await supabase.auth.signUp({
+    //     email: email,
+    //     password: password,
+    // });
 
-export async function signInUser(email, password) {}
+    // if (error) console.error(error);
+    // return data;
 
-export async function checkAuth() {}
+    const response = await client.auth.signUp({
+        email: email,
+        password: password,
+    });
+    // if (error) console.error(error);
+    // console.log(response);
+    return response.data;
+    
+}
 
-export async function redirectIfLoggedIn() {}
+export async function signInUser(email, password) {
+    // const { data, error } = await client.auth.signInWithPassword({
+    //     email: email,
+    //     password: password,
+    // });
 
-export async function logout() {}
+    // if (error) console.error(error);
+    // return data;
+    //had to use "signIn" not "signInWithPassword"!!
+    const response = await client.auth.signIn({
+        email: email,
+        password: password,
+    });
+    // if (error) console.error(error);
+    return response.data;
+}
+
+export async function checkAuth() {
+// check if user (bang), if not go back to home page
+    const user = await getUser(); 
+
+    if (!user) location.replace('../');
+}
+
+export async function redirectIfLoggedIn() {
+    const user = await getUser();
+    if (user) location.replace('../other-page');
+}
+
+export async function logout() {
+    // const { error } = await client.auth.signOut();
+
+    // if (error) console.error(error);
+    // return error;
+
+    const response = await client.auth.signOut();
+
+    return response.data;
+
+}
