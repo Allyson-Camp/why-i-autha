@@ -35,22 +35,24 @@ signInForm.addEventListener('submit', async (e) => {
     
     window.location.href = '../other-page';
 
-    // Redirect to /other-page on successful auth
-    // Redirect to /other-page when page loads if user is authenticated
+   
 });
 
 redirectIfLoggedIn();
+
 // Fetch 
 // Loop
 // O pass object
 // R into render function
 // Append to root dom
 
+// Wire up sign in and sign up forms to supabase
+// Redirect to /other-page on successful auth
+// Redirect to /other-page when page loads if user is authenticated
 
 //display functions
 
 //call necessary functions
-// redirectIfLoggedIn();
 
 // Wire up sign in and sign up forms to supabase
 // Redirect to /other-page on successful auth
